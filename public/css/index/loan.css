@@ -1,0 +1,196 @@
+.container-full {
+
+                      }
+.zimu {
+    color: #808080;
+    background: #FFA93A;
+    height: 2em;
+    line-height: 2em;
+    letter-spacing: 0.3em;
+}
+
+.sum {
+    height:30vh;
+    background: url('/images/home/loan/background.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-top: 60px;
+}
+
+.sum h4 {
+    font-weight: bold;
+    color: #646464;
+    letter-spacing: 0.2em;
+    margin-top: 1.3em;
+}
+
+.xuanjine {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.sum .bar {
+    height:10px;
+    width: 75%;
+    background: #848484;
+    padding: 0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 5px 5px #888888;
+    position: relative;
+}
+
+.bar .left {
+    height:10px;
+    width: 47%;
+    border-radius: 5px;
+    background: #FAB051;
+}
+
+.bar .icon {
+    background: url('/images/home/loan/change.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height:30px;
+    width:30px;
+    position: absolute;
+    left:44%;
+    top:-10px;
+    cursor: pointer;
+}
+
+.bar .icon .tishikuang {
+    width:15vw;
+    height:7vh;
+    line-height: 6vh;
+    background: url('/images/home/loan/duo.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top:-40px;
+    left: -6%;
+    color: white;
+    text-align: center;
+}
+
+.shuru {
+    width: 30%;
+    margin-left: 20px;
+}
+
+.shuru input {
+    border-radius: 5px;
+    background: #F49417;
+    color:white;
+    border:0px;
+    height:30px;
+    outline: none;
+}
+
+.biaoshi {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:82%;
+    margin-left:2em;
+    margin-top:15px;
+    color:#808080;
+}
+
+.days {
+    margin-top:20px;
+}
+
+.days p {
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color:#808080;
+}
+
+.days .zhuanshi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.btn-container {
+    width: 80vw;
+    margin: 5vw 0;
+}
+
+.btn-groups {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.groups-item {
+    height: 25vw;
+    line-height: 25vw;
+    width: 25vw;
+    border-radius: 50%;
+    text-align: center;
+    background-color: darkgray;
+    color: white;
+}
+
+.active {
+    background-color: orange;
+}
+
+.btnj {
+    margin-top: 3vh;
+    width: 45vh;
+    height: 6vh;
+}
+
+.btnj input[type=submit] {
+    width: 100%;
+    height:12vw;
+    background: #FFA93A;
+    outline:none;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    letter-spacing: 0.2em;
+    font-size: 1.2em;
+    box-shadow: 0px 5px 5px #888888;
+}
+
+
+#slider .rs-range-color  {
+    background-color: #ff8d00;
+}
+#slider .rs-handle:after  {
+    background-color: #000000;
+}
+
+#slider .rs-path-color  {
+    background-color: #939393;
+}
+
+#slider .rs-tooltip-text {
+    color:#808080;
+    font-weight: 900;
+    font-size: 1.7em;
+}
+
+.rs-inner {
+    background: url('/images/home/loan/yuan.png');
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}
+
+.tianshu {
+    position: absolute;
+    z-index: 1000;
+    top:45px;
+    left:85px;
+    color: #808080;
+}

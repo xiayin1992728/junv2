@@ -1,0 +1,114 @@
+.container-full {
+
+}
+
+.has-error .form-control {
+    border-color:red;
+}
+
+.back {
+    width: 100vw;
+}
+
+.back img {
+    width: 100%;
+}
+
+.large {
+    width:100vw;
+    padding: 0 5vw 0 5vw;
+}
+
+.login-header {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5vw 0;
+}
+
+.login-header h4 span {
+    font-size: 5vw;
+    font-weight: bold;
+    margin: 0 5vw;
+}
+
+.container-img {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-img div {
+    width: 8vw;
+}
+
+.container-img div img {
+    width: 100%;
+    height: 100%;
+}
+
+.login-panel {
+
+}
+
+.form-group input {
+    border:1px solid #e6ddd5;
+    border-radius: 2vw;
+    outline: none;
+}
+
+.getCode {
+    display: flex;
+    flex-direction: row;
+}
+
+.getCode input {
+    border-radius: 2vw 0 0 2vw;
+    border-top: 1px solid #e6ddd5;
+    border-bottom: 1px solid #e6ddd5;
+    border-left: 1px solid #e6ddd5;
+    border-right: 0;
+}
+
+.getCode button {
+    border:1px solid #e6ddd5;
+    border-left:0;
+    border-radius: 0 2vw 2vw 0;
+    color: white;
+    background: #e6ddd5;
+    outline: none;
+    filter:chroma(color=#000000);
+}
+
+.inperror::-webkit-input-placeholder {
+    color:red;
+}
+
+
+.getCode img {
+    border: 1px solid #e6ddd5;
+    border-left: 0;
+    border-radius :0 2vw 2vw 0;
+    background: white;
+    font-size:1.3em;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    height: 34px;
+    line-height: 34px;
+    width: 25vw;
+    text-align: center;
+}
+
+.shenqi {
+    width: 100%;
+    height: 10vw;
+    border: 0;
+    border-radius: 8vw;
+    background: #FCE002;
+    color: #763935;
+    outline: none;
+}
