@@ -1,0 +1,169 @@
+
+body {
+    height: 100%;
+    background: #EFEFEF;
+}
+
+.container-full {
+    height: 100%;
+}
+
+.large {
+    width: 100vw;
+    background: #EFEFEF;
+    /*position: fixed;*/
+    /*z-index: 100;*/
+    /*top:0;*/
+}
+
+.app a {
+    color: #6695FF;
+}
+
+.notice {
+/ / background: darkgreen;
+    margin: 0px;
+    color: #f49417;
+}
+
+.product-container {
+
+}
+
+.miao_list {
+    background: white;
+    margin: 0 15px 15px 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 1px 2px #C0C0C0;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 15px 0 15px;
+}
+
+.top .left {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.top .left i {
+    width: 50px;
+    height: 50px;
+}
+
+.top .left i img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.top .left div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.top .left div p {
+    color: #AEAEAE;
+}
+
+.top .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top .right button {
+    background: #F49417;
+    color: white;
+}
+
+.top .right p {
+    margin: 8px 0 0 0;
+    color: #AEAEAE;
+}
+
+.buttom {
+    padding: 0 0 0 15px;
+}
+
+.buttom p {
+    color: #AEAEAE;
+}
+
+a:focus, a:hover {
+    color: #23527c;
+}
+
+.xiakuan {
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    background: #f49417;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    color: white;
+}
+
+.xiakuan-header {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.xiakuan-header div {
+    font-size: 16px;
+}
+
+.xiakuan icon {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url('/static/index/second/notice.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-left: 10px;
+}
+
+.xiakuan-list {
+    position: absolute;
+    width: 70%;
+    left: 100px;
+}
+
+.xiakuan-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 2px;
+    height: 50px;
+    justify-content: space-around;
+}
+
+.xiakuan-container .left i img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.xiakuan-container h5 {
+    letter-spacing: 3px;
+}
+
+.xiakuan-container .right {
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.xiakuan-container .right h6, p {
+    margin: 0;
+}

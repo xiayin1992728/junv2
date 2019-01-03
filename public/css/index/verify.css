@@ -1,0 +1,151 @@
+.wenzi {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5vh;
+    height: 125vw;
+}
+
+.fangshi {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5vh;
+}
+
+.fangshi p {
+    letter-spacing: 0.2em;
+    color: #CFCFCF;
+}
+
+.info {
+
+}
+
+.info .wai {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.wai .icon {
+    width: 30px;
+    height: 30px;
+}
+
+.name .icon {
+    background: url('/static/index/verify/name.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.idCard .icon {
+    background: url('/static/index/verify/idcard.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.zhimafen .icon {
+    background: url('/static/index/verify/zhima.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.qq .icon {
+    background: url('/static/index/verify/qq.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.weixin .icon {
+    background: url('/static/index/verify/weixin.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.money .icon {
+    background: url('/static/index/verify/money.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.change {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;;
+}
+
+.change .common {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.common p {
+    width: 32vw;
+    letter-spacing: 0.1em;
+    margin-top: 1vh;
+    color: #CFCFCF;
+}
+
+.common span {
+    margin-right: 10px;
+    color: #CFCFCF;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btns input {
+    width: 65vw;
+    border: 0;
+    border-radius: 20px;
+    outline: none;
+    background: #F6A43A;
+    color: white;
+    height: 6vh;
+}
+
+.inp::-webkit-input-placeholder {
+    color: #CFCFCF;
+}
+
+.inperrors::-webkit-input-placeholder {
+    color: red;
+}
+
+.wai input {
+    border: 0;
+    outline: none;
+    width: 70vw;
+    height: 6vw;
+    padding-left: 15px;
+    letter-spacing: 0.1em;
+}
+
+.error {
+    width: 9vw;
+    height: 6vw;
+    background: url('/static/index/verify/error.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.yes {
+    width: 9vw;
+    height: 6vw;
+    background: url('/static/index/verify/yes.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.bgk {
+    background: url('/static/index/verify/background.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 16vh;
+}

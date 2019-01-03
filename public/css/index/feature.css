@@ -1,0 +1,29 @@
+
+.large {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.large h4 {
+    margin-top: 8vh;
+    margin-bottom: 2vh;
+    color: #747474;
+    letter-spacing: 0.1em;
+}
+
+.tugif {
+    height: 20vh;
+    width: 45vw;
+    background: url('/static/index/feature/tugif.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.wenzi p {
+    color: #F5A237;
+    font-size: 1.2em;
+}
