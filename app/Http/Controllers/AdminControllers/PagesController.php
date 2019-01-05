@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\AdminControllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
 {
     public function home()
     {
-        return view('admin.home');
+        $menus = config('admin.menu');
+        return view('admin.pages.home',['menus' => $menus]);
+    }
+
+    public function welcome()
+    {
+        return view('admin.pages.welcome');
     }
 }

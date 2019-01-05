@@ -1,7 +1,7 @@
 <?php
 
 Route::namespace('IndexControllers')->group(function() {
-    Route::get('/','PagesController@home');
+    Route::get('/','PagesController@home')->name('index.login');
     Route::post('message','HomeController@message')->name('message');
     Route::post('user','HomeController@store')->name('user.store');
 
@@ -19,6 +19,19 @@ Route::namespace('IndexControllers')->group(function() {
 
 
 Route::namespace('AdminControllers')->prefix('admin')->group(function() {
-   Route::get('/','PagesController@home');
+
+   Route::get('login','SessionsController@login')->name('admin.login');
+   Route::post('login','SessionsController@store')->name('session.store');
+   Route::middleware(['auth:admin'])->group(function() {
+       Route::get('/','PagesController@home')->name('admin.home');
+       Route::get('welcome','PagesController@welcome')->name('welcome');
+       Route::resource('user','UsersController',['except' => ['show']]);
+       Route::get('user/data','UsersController@data')->name('admin.user.data');
+       Route::get('user/search','UsersController@search')->name('admin.user.search');
+       Route::resource('admin','AdminsController',['except' => ['show']]);
+       Route::get('admin/data','AdminsController@data')->name('admin.admin.data');
+       Route::get('admin/search','AdminsController@search')->name('admin.admin.search');
+   });
+
 });
 

@@ -14,27 +14,15 @@ class UsersTableSeeder extends Seeder
     {
         $faker = app(Faker\Generator::class);
 
-        $phones = [
-        	'15108479103',
-        	'18349227204',
-        	'13402817879',
-        	'15108479104',
-        	'15108479105',
-        	'15108479106',
-        	'15108479107'
-        ];
 
         // 生成数据集合
         $users = factory(User::class)
-                        ->times(7)
-                        ->make()
-                        ->each(function ($user,$index) use ($phones) {
-                        	$user->phone = $phones[$index];
-                        	$user->password = bcrypt($phones[$index]);
-                        });
+                        ->times(100)
+                        ->make();
+
 
          // 让隐藏字段可见，并将数据集合转换为数组
-        $user_array = $users->makeVisible(['password', 'remember_token'])->toArray();
+        $user_array = $users->makeVisible(['remember_token'])->toArray();
 
         // 插入到数据库中
         User::insert($user_array);

@@ -15,11 +15,11 @@ use Carbon\Carbon;
 */
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
-    static $password;
     $now = Carbon::now()->toDateTimeString();
     return [
-        'name' => $faker->lastName,
+        'name' => $faker->name,
         'remember_token' => str_random(10),
+        'phone' => $faker->phoneNumber,
         'created_at' => $now,
     	'updated_at' => $now,
     ];

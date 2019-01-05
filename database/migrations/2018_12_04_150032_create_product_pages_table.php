@@ -19,7 +19,6 @@ class CreateProductPagesTable extends Migration
             $table->string('name')->comment('页面名称');
             $table->string('pages')->comment('页面');
             $table->timestamps();
-            $table->foreign('pid')->references('id')->on('products')->onDelete('cascade');
         });
     }
 
@@ -30,9 +29,6 @@ class CreateProductPagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('count_peoples', function (Blueprint $table) {
-            $table->dropForeign(['pid']);
-        });
         Schema::dropIfExists('product_pages');
     }
 }
