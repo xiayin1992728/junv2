@@ -6,10 +6,10 @@
     <form class="layui-form">
         <div class="layui-form-item">
             <label for="username" class="layui-form-label">
-                <span class="x-red">*</span>姓名
+                姓名
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="username" name="name" required="" lay-verify="required"
+                <input type="text" id="username" name="name"
                        autocomplete="off" class="layui-input">
             </div>
 
@@ -63,8 +63,8 @@
                 房
             </label>
             <div class="layui-input-inline">
-                    <input type="radio" name="house" value="1" title="有">
-                    <input type="radio" name="house" value="0" title="无" checked>
+                <input type="radio" name="house" value="1" title="有">
+                <input type="radio" name="house" value="0" title="无" checked>
             </div>
 
             <label for="L_pass" class="layui-form-label">
@@ -107,8 +107,9 @@
             </label>
             <div class="layui-input-inline">
                 <select name="sid" lay-verify="required">
+                    <option value="" selected>请选择</option>
                     @foreach ($admins as $admin)
-                    <option value="{{ $admin->id }}">{{ $admin->name }}</option>
+                        <option value="{{ $admin->id }}">{{ $admin->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -139,7 +140,7 @@
                 }
             });
             $.ajax({
-                url: "{{ route('admin.store') }}",
+                url: "{{ route('user.store') }}",
                 type: 'post',
                 data:data.field,
                 dataType: 'json',
@@ -163,12 +164,8 @@
                     if (res.errors != undefined) {
                         if (res.errors.phone != undefined) {
                             layer.msg(res.errors.phone[0],{icon:5});
-                        } else if (res.errors.name != undefined) {
-                            layer.msg(res.errors.name[0],{icon:5});
-                        } else if (res.errors.roles != undefined) {
-                            layer.msg(res.errors.roles[0],{icon:5});
-                        } else if (res.errors.password != undefined) {
-                            layer.msg(res.errors.password[0],{icon:5});
+                        } else if (res.errors.sid != undefined) {
+                            layer.msg(res.errors.sid[0],{icon:5});
                         }
                     }
                 }
@@ -178,5 +175,4 @@
     });
 </script>
 </body>
-
 </html>

@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('link')->comment('产品链接');
             $table->string('saleman')->comment('产品业务员');
             $table->char('types',20)->default('外部产品')->comment('产品分类 内部产品 外部产品');
+            $table->boolean('status')->default(1)->comment('产品状态 0下架 1上架');
             $table->timestamps();
         });
     }

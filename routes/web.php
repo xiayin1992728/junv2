@@ -25,12 +25,35 @@ Route::namespace('AdminControllers')->prefix('admin')->group(function() {
    Route::middleware(['auth:admin'])->group(function() {
        Route::get('/','PagesController@home')->name('admin.home');
        Route::get('welcome','PagesController@welcome')->name('welcome');
+
+       // 前台用户
        Route::resource('user','UsersController',['except' => ['show']]);
        Route::get('user/data','UsersController@data')->name('admin.user.data');
        Route::get('user/search','UsersController@search')->name('admin.user.search');
+
+       // 后台用户
        Route::resource('admin','AdminsController',['except' => ['show']]);
        Route::get('admin/data','AdminsController@data')->name('admin.admin.data');
        Route::get('admin/search','AdminsController@search')->name('admin.admin.search');
+
+       // 权限
+       Route::resource('permissions','PermissionsController',['except' => ['show']]);
+       Route::get('permissions.data','PermissionsController@data')->name('admin.permissions.data');
+       // 角色
+       Route::resource('roles','RolesController',['except' =>['show']]);
+       Route::get('roles.data','RolesController@data')->name('admin.roles.data');
+
+       // 产品
+       Route::resource('products','ProductsController',['except' => ['show']]);
+       Route::put('products/status/{products}','ProductsController@status')->name('admin.products.status');
+       Route::get('products/data','ProductsController@data')->name('admin.products.data');
+       Route::get('products/search','ProductsController@search')->name('admin.products.search');
+       Route::post('products/logo','ProductsController@uploads')->name('admin.products.logo');
+
+       Route::resource('productPages','ProductPagesController',['except' => ['show']]);
+       Route::get('productPages.data','ProductPagesController@data')->name('admin.productPages.data');
+       Route::get('productPages/search','ProductPagesController@search')->name('admin.productPages.search');
+
    });
 
 });

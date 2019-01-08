@@ -11,7 +11,14 @@
         <form class="layui-form layui-col-md12 x-so">
             <input class="layui-input" placeholder="开始时间" autocomplete="off" name="start" id="start">
             <input class="layui-input" placeholder="截止时间" autocomplete="off" name="end" id="end">
-            <input type="text" name="phone"  placeholder="请输入手机号" autocomplete="off" class="layui-input">
+            <div class="layui-input-inline">
+                <select name="column">
+                    <option value="">选择搜条件</option>
+                    <option value="phone">手机号</option>
+                    <option value="name">姓名</option>
+                </select>
+            </div>
+            <input type="text" name="column_value"  placeholder="请输入" autocomplete="off" class="layui-input">
             <button class="layui-btn"  lay-submit="" lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
         </form>
     </div>
@@ -59,6 +66,7 @@
                 {field: 'credit', title: '芝麻分',align:'center'},
                 {field: 'qq', title: 'QQ号',align:'center'},
                 {field: 'weixin', title: '微信号',align:'center'},
+                {field:'sname',title: '推荐者',align: 'center'},
                 {field: 'created_at', title: '创建时间',sort:true,align:'center'},
                 {field: 'updated_at', title: '修改时间',sort:true,align:'center'},
                     @if(auth()->guard('admin')->user()->can('修改用户') || auth()->guard('admin')->user()->can('删除用户'))
@@ -107,7 +115,7 @@
                     })
                 });
             } else if(layEvent === 'edit'){
-                x_admin_show('前台用户编辑','{{ env('APP_URL') }}'+'/admin/user/'+obj.data.id+'/edit',500,400);
+                x_admin_show('前台用户编辑','{{ env('APP_URL') }}'+'/admin/user/'+obj.data.id+'/edit',1000,400);
             }
         });
 

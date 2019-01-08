@@ -39,6 +39,7 @@
                        autocomplete="off" class="layui-input">
             </div>
         </div>
+
         <div class="layui-form-item">
             <label for="L_repass" class="layui-form-label">
             </label>
@@ -99,6 +100,16 @@
                }
             });
             return false;
+        });
+
+        $('.layui-unselect').on('click',function () {
+            if ($(this).children('span').text() == '推广员') {
+                if ($(this).hasClass('layui-form-checked')) {
+                        // 显示出推广员的
+                } else {
+                       // 隐藏掉推广员的
+                }
+            }
         });
     });
 </script>

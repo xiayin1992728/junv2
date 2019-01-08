@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Channel;
-use App\Models\Spread;
-use App\Models\ProductPage;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model

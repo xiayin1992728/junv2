@@ -28,8 +28,16 @@ class SeedRolesAndPermissionsData extends Migration
         Permission::create(['name' => '添加用户','guard_name' => 'admin']);
         Permission::create(['name' => '修改用户','guard_name' => 'admin']);
         Permission::create(['name' => '删除用户','guard_name' => 'admin']);
-        Permission::create(['name' => '角色','guard_name' => 'admin']);
-        Permission::create(['name' => '权限','guard_name' => 'admin']);
+
+        Permission::create(['name' => '权限管理','guard_name' => 'admin']);
+        Permission::create(['name' => '角色列表','guard_name' => 'admin']);
+        Permission::create(['name' => '添加角色','guard_name' => 'admin']);
+        Permission::create(['name' => '修改角色','guard_name' => 'admin']);
+        Permission::create(['name' => '删除角色','guard_name' => 'admin']);
+        Permission::create(['name' => '权限列表','guard_name' => 'admin']);
+        Permission::create(['name' => '修改权限','guard_name' => 'admin']);
+        Permission::create(['name' => '添加权限','guard_name' => 'admin']);
+        Permission::create(['name' => '删除权限','guard_name' => 'admin']);
        
         // 渠道管理
         Permission::create(['name' => '渠道管理','guard_name' => 'admin']);
@@ -43,6 +51,7 @@ class SeedRolesAndPermissionsData extends Migration
         Permission::create(['name' => '添加产品','guard_name' => 'admin']);
         Permission::create(['name' => '修改产品','guard_name' => 'admin']);
         Permission::create(['name' => '删除产品','guard_name' => 'admin']);
+        Permission::create(['name' => '产品上下架','guard_name' => 'admin']);
         Permission::create(['name' => '页面添加','guard_name' => 'admin']);
         Permission::create(['name' => '页面修改','guard_name' => 'admin']);
         Permission::create(['name' => '页面删除','guard_name' => 'admin']);
@@ -62,18 +71,7 @@ class SeedRolesAndPermissionsData extends Migration
 
         // 创建超级管理，并赋予权限
         $super = Role::create(['name' => '超级管理员','guard_name' => 'admin']);
-
-        $super->givePermissionTo(['用户管理','角色','权限','添加用户','修改用户','删除用户','前台用户','后台用户']);
-
-        $super->givePermissionTo(['站点管理','链接开关']);
-
-        $super->givePermissionTo(['渠道管理','添加渠道','修改渠道','删除渠道']);
-
-        $super->givePermissionTo(['产品管理','添加产品','修改产品','删除产品']);
-        $super->givePermissionTo(['页面管理','页面添加','页面修改','页面删除']);
-
-        $super->givePermissionTo(['推广管理','推广统计','修改推广','添加推广','删除推广']);
-
+        $super->givePermissionTo(Permission::all());
 
 
         // 创建管理员角色，并赋予权限
@@ -81,8 +79,6 @@ class SeedRolesAndPermissionsData extends Migration
         $maintainer->givePermissionTo('渠道管理');
         $maintainer->givePermissionTo('推广统计');
         $maintainer->givePermissionTo('推广管理');
-        $maintainer->givePermissionTo('角色');
-        $maintainer->givePermissionTo('权限');
         $maintainer->givePermissionTo(['用户管理','前台用户','后台用户']);
         $maintainer->givePermissionTo('产品管理');
         
