@@ -40,23 +40,15 @@
     @{{# if(d.del) { }}
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     @{{# } }}
-
-    @{{# if (d.statusCan) { }}
-    @{{# if (d.status) { }}
-    <a class="layui-btn layui-btn-xs" lay-event="status">下架</a>
-    @{{# } else{ }}
-    <a class="layui-btn layui-btn-xs" lay-event="status">上架</a>
-    @{{# } }}
-    @{{# } }}
 </script>
 <script type="text/html" id="imgTpl">
     <img style="width: 50px;height: 50px" src="@{{ d.logo }}">
 </script>
 <script type="text/html" id="status">
     @{{# if( d.status ) { }}
-    <span class="layui-btn layui-btn-normal layui-btn-sm">已上架</span>
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="status">已上架</a>
     @{{# }else { }}
-    <span class="layui-btn layui-btn-danger layui-btn-sm">已下架</span>
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="status">已下架</a>
     @{{# } }}
 </script>
 <script>
@@ -112,7 +104,11 @@
                 },
                 {field: 'link', title: '链接', align: 'center', width: 500},
                 {field: 'saleman', title: '业务员', align: 'center', width: 100},
-                {field: 'status', title: '状态', align: 'center', width: 90, templet: '#status'},
+                @if(auth()->guard('admin')->user()->can('产品上下架'))
+                    {field: 'statusText', title: '状态', align: 'center', width: 90, templet: '#status'},
+                @else
+                    {field: 'statusText', title: '状态', align: 'center', width: 90, templet: '<span>@{{ d.statusText }}<span>'},
+                @endif
                 {field: 'types', title: '类型', align: 'center', width: 100},
                 {field: 'created_at', title: '创建时间', sort: true, align: 'center', width: 200},
                 {field: 'updated_at', title: '修改时间', sort: true, align: 'center', width: 200},
@@ -144,8 +140,8 @@
         table.on('tool(products)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
-            console.log(obj.data);
             if (layEvent === 'status') {
+                console.log(obj.data.status);
                 let title = obj.data.status ? '下架' : '上架';
                 layer.confirm('确认'+title+'该产品吗?', function (index) {
                     layer.close(index);
@@ -156,21 +152,20 @@
                         }
                     });
                     $.ajax({
-                        url: "{{ env('APP_URL') }}" + '/admin/products/status/' + obj.data.id,
+                        url: "{{ config('app.url') }}" + '/admin/products/status/' + obj.data.id,
                         type: 'put',
                         dataType: 'json',
                         success: function (res) {
                             if (res.status == 200) {
-                                location.replace(location.href);
-                                /*if (obj.data.status) {
-                                    $(obj.tr[0]).find("td[data-field='status'] .layui-table-cell").html('<span class="layui-btn layui-btn-danger layui-btn-sm">已下架</span>')
-                                    $(obj.tr[2]).find(".layui-table-cell a:last-child").text('上架');
-                                    obj.data.status = 0;
+                                //.replace(location.href);
+                                if (obj.data.status) {
+                                    $(obj.tr[0]).find("td[data-field='status'] .layui-table-cell").html('<a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="status">已下架</a>');
+                                    obj.update({status:0,statusText:'已下架'})
                                 } else {
-                                    $(obj.tr[0]).find("td[data-field='status'] .layui-table-cell").html('<span class="layui-btn layui-btn-normal layui-btn-sm">已上架</span>');
-                                    $(obj.tr[2]).find(".layui-table-cell a:last-child").text('下架');
-                                    obj.data.status = 1;
-                                }*/
+                                    $(obj.tr[0]).find("td[data-field='status'] .layui-table-cell").html('<a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="status">已上架</a>');
+                                    obj.update({status:1,statusText:'已上架'});
+                                }
+                                console.log(obj.data);
                                 layer.msg(res.msg, {icon: 6});
                             } else {
                                 layer.msg(res.msg, {icon: 5});

@@ -50,6 +50,7 @@ Route::namespace('AdminControllers')->prefix('admin')->group(function() {
        Route::get('products/search','ProductsController@search')->name('admin.products.search');
        Route::post('products/logo','ProductsController@uploads')->name('admin.products.logo');
 
+       // 产品页面
        Route::resource('productPages','ProductPagesController',['except' => ['show']]);
        Route::get('productPages.data','ProductPagesController@data')->name('admin.productPages.data');
        Route::get('productPages/search','ProductPagesController@search')->name('admin.productPages.search');

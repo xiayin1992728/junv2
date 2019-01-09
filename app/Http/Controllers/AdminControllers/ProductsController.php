@@ -24,6 +24,7 @@ class ProductsController extends Controller
         foreach ($data as $k => $v) {
             $data[$k]['statusCan'] = Auth::guard('admin')->user()->can('产品上下架');
             $data[$k]['status'] = $v->status;
+            $data[$k]['statusText'] = $v->status ? '已上架' : '已下架';
             $data[$k]['del'] = Auth::guard('admin')->user()->can('删除产品');
             $data[$k]['edit'] = Auth::guard('admin')->user()->can('修改产品');
         }
@@ -107,9 +108,9 @@ class ProductsController extends Controller
     public function search(Product $product,Request $request)
     {
         $offset = ($request->get('page')-1)*$request->get('limit');
-        $count = $product->count('id');
         $where = $this->filterItem($request);
         $data = $product->where($where)->offset($offset)->limit($request->get('limit'))->get();
+        $count = $product->where($where)->count('id');
         foreach ($data as $k => $v) {
             $data[$k]['del'] = Auth::guard('admin')->user()->can('删除产品');
             $data[$k]['edit'] = Auth::guard('admin')->user()->can('修改产品');

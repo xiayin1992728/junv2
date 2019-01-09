@@ -46,6 +46,10 @@
             });
         });
     })
+
+    if (window != top ) {
+        top.location.href = window.location.href;
+    }
 </script>
 <!-- 底部结束 -->
 </body>

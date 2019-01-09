@@ -52,9 +52,9 @@ class SeedRolesAndPermissionsData extends Migration
         Permission::create(['name' => '修改产品','guard_name' => 'admin']);
         Permission::create(['name' => '删除产品','guard_name' => 'admin']);
         Permission::create(['name' => '产品上下架','guard_name' => 'admin']);
-        Permission::create(['name' => '页面添加','guard_name' => 'admin']);
-        Permission::create(['name' => '页面修改','guard_name' => 'admin']);
-        Permission::create(['name' => '页面删除','guard_name' => 'admin']);
+        Permission::create(['name' => '添加页面','guard_name' => 'admin']);
+        Permission::create(['name' => '修改页面','guard_name' => 'admin']);
+        Permission::create(['name' => '删除页面','guard_name' => 'admin']);
         Permission::create(['name' => '页面管理','guard_name' => 'admin']);
 
 
