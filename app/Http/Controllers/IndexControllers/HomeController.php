@@ -18,54 +18,51 @@ class HomeController extends Controller
     {
         //  得到推广链接的编号
         $number = $request->arg;
-
+        $number = base64_decode($number);
         // 查询出推广是否存在
         $spread = Spread::where('number', $number)->first();
+        if (!$spread || !$number) {
+            return false;
+        }
 
         // 判断是否是通过 推广注册
-        if ($number && $spread) {
-            // 给推广方 添加注册人数
-            $time = date('Y-m-d', time());
-            $change = $spread->change;
-            $count = new CountPeople;
-            // 查询今天的是否存在
-            $res = $count->where('create_time', $time)->where('sid', $spread->id)->first();
+        // 给推广方 添加注册人数
+        $time = date('Y-m-d', time());
+        $change = $spread->change;
+        $count = new CountPeople;
+        // 查询今天的是否存在
+        $res = $count->where('create_time', $time)->where('sid', $spread->id)->first();
 
-            if (!$res) {
-                $count->people = $change;
-                $count->create_time = $time;
-                $count->sid = $spread->id;
-                $count->uid = $spread->channel->admin->id;
-
-                $count->save();
-            } else {
-                $res->people = $res->people + $change;
-                $res->save();
-            }
-
-            // 通过推广注册 添加用户推广注册标示
-            $user->sid = $spread->id;
+        if (!$res) {
+            $count->people = $change;
+            $count->create_time = $time;
+            $count->sid = $spread->id;
+            $count->uid = $spread->admin->id;
+            $count->save();
+        } else {
+            $res->people = $res->people + $change;
+            $res->save();
         }
+
+        // 通过推广注册 添加用户推广注册标示
+        $user->sid = $spread->id;
+        $user->change = $change;
 
         // 保存用户信息
         $user->phone = $request->phone;
         $user->password = bcrypt($request->phone);
-
         $user->save();
 
         return $user;
-
     }
 
 
     public function store(LoginRequest $request, User $user)
     {
-
         $verifyData = \Cache::get($request->key);
         if (!$verifyData) {
             return redirect('/');
         }
-
         if (!hash_equals($verifyData['code'], $request->code)) {
             return redirect('/');
         }
@@ -74,20 +71,17 @@ class HomeController extends Controller
         $res = $user::where('phone', $request->phone)->first();
         if (!$res) {
             $user = $this->add($user, $request);
+            if (!$user) {
+                return redirect('/'.$request->arg);
+            }
         } else {
             $user = $res;
         }
 
-        if ($user->isAdmin) {
-            return redirect('login');
-        }
-
-
-        Auth::attempt(['phone' => $request->phone, 'password' => $request->phone]);
+        Auth::guard('web')->login($user);
 
         // 判断开启的页面
         return redirect('loan');
-
     }
 
 

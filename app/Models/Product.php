@@ -12,7 +12,7 @@ class Product extends Model
 
     public function spread()
     {
-    	return $this->hasMany(Spread::class);
+    	return $this->hasMany(Spread::class,'pid','id');
     }
 
     public function productPage()

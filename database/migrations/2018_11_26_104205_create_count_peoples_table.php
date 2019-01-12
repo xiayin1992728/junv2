@@ -18,6 +18,7 @@ class CreateCountPeoplesTable extends Migration
             $table->integer('sid')->unsigned()->comment('推广外键');
             $table->integer('uid')->unsigned()->comment('推广人外键');
             $table->decimal('people',8,2)->comment('注册人数');
+            $table->decimal('verify',8,2)->default(0)->comment('实名认证数');
             $table->decimal('moeny',8,2)->default(0)->comment('金额');
             $table->date('create_time')->comment('创建时间');
         });

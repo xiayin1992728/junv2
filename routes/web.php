@@ -1,11 +1,14 @@
 <?php
 
 Route::namespace('IndexControllers')->group(function() {
-    Route::get('/','PagesController@home')->name('index.login');
-    Route::post('message','HomeController@message')->name('message');
-    Route::post('user','HomeController@store')->name('user.store');
 
-    Route::middleware(['auth:web'])->group(function() {
+    Route::middleware(['guest:web'])->group(function() {
+        Route::get('/{arg}','PagesController@home')->where(['arg' => '[a-zA-z0-9]*=='])->name('index.login');
+        Route::post('message','HomeController@message')->name('message');
+        Route::post('user','HomeController@store')->name('home.user.store');
+    });
+
+    Route::middleware(['auth:web','checkLink'])->group(function() {
        Route::get('loan','PagesController@loan')->name('loan.index');
        Route::post('loan','LoanController@store')->name('loan.store');
        Route::get('verify','PagesController@verify')->name('verify.index');
@@ -25,7 +28,7 @@ Route::namespace('AdminControllers')->prefix('admin')->group(function() {
    Route::middleware(['auth:admin'])->group(function() {
        Route::get('/','PagesController@home')->name('admin.home');
        Route::get('welcome','PagesController@welcome')->name('welcome');
-
+       Route::delete('logout','SessionsController@logout')->name('admin.logout');
        // 前台用户
        Route::resource('user','UsersController',['except' => ['show']]);
        Route::get('user/data','UsersController@data')->name('admin.user.data');
@@ -52,8 +55,27 @@ Route::namespace('AdminControllers')->prefix('admin')->group(function() {
 
        // 产品页面
        Route::resource('productPages','ProductPagesController',['except' => ['show']]);
-       Route::get('productPages.data','ProductPagesController@data')->name('admin.productPages.data');
+       Route::get('productPages/data','ProductPagesController@data')->name('admin.productPages.data');
        Route::get('productPages/search','ProductPagesController@search')->name('admin.productPages.search');
+       Route::get('productPages/product','ProductPagesController@getProductPages')->name('admin.productPages.product');
+       // 渠道
+      /* Route::resource('channels','ChannelsController',['except' => ['show']]);
+       Route::get('channels/data','ChannelsController@data')->name('admin.channels.data');
+       Route::get('channels/search','ChannelsController@search')->name('admin.channels.search');*/
+
+       // 推广
+       Route::resource('spreads','SpreadsController',['except' => ['show']]);
+       Route::get('spreads/data','SpreadsController@data')->name('admin.spreads.data');
+       Route::get('spreads/search','SpreadsController@search')->name('admin.spreads.search');
+
+       Route::resource('countPeoples','CountPeoplesController',['only' => ['index']]);
+       Route::get('countPeoples/data','CountPeoplesController@data')->name('admin.countPeoples.data');
+       Route::get('countPeoples/search','CountPeoplesController@search')->name('admin.countPeoples.search');
+
+       // 设置
+       Route::get('carousel','CarouselController@index')->name('admin.carousel.index');
+       Route::post('carousel','CarouselController@store')->name('admin.carousel.store');
+       Route::post('carousel/uploads','CarouselController@upload')->name('admin.carousel.upload');
 
    });
 

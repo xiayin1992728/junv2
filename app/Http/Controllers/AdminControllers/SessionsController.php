@@ -41,4 +41,10 @@ class SessionsController extends Controller
             return ['status' => 400,'msg' => '用户不存在或密码错误'];
         }
     }
+
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login');
+    }
 }

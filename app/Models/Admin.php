@@ -18,13 +18,9 @@ class Admin extends Authenticatable
         'password',
     ];
 
-    public function channel()
+    public function spread()
     {
-        return $this->hasOne(Channel::class, 'uid', 'id');
+        return $this->hasMany(Spread::class, 'uid', 'id');
     }
 
-    public function user()
-    {
-        return $this->hasMany(User::class,'sid','id');
-    }
 }

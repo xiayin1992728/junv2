@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('card')->nullable()->comment('是否有车产 0没有 1有')->default(0);
             $table->tinyInteger('accumulation')->nullable()->comment('是否有公积金 0没有 1有')->default(0);
             $table->tinyInteger('insurance')->nullable()->comment('是否有社保 0没有 1有')->default(0);
+            $table->decimal('change',4,2)->comment('流量统计')->default(0);
             $table->rememberToken()->comment('记住我');
             $table->timestamps();
         });

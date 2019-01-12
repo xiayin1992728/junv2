@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="login-panel">
-            <form action="{{ route('user.store') }}" method="POST">
+            <form action="{{ route('home.user.store') }}" method="POST">
                 {{ csrf_field() }}
 
                 @if ($errors->has('phone'))

@@ -14,11 +14,6 @@ class Spread extends Model
 	]; 
 
 
-	public function channel()
-	{
-		return $this->belongsTo(Channel::class,'cid','id');
-	}
-
 	public function product()
 	{
 		return $this->belongsTo(Product::class,'pid','id');
@@ -29,8 +24,18 @@ class Spread extends Model
 		return $this->hasMany(CountPeople::class);
 	}
 
+	public function admin()
+    {
+        return $this->belongsTo(Admin::class,'uid','id');
+    }
+
 	public function productPage()
     {
         return $this->belongsToMany(ProductPage::class,'page_spreads','spread_id','page_id');
+    }
+
+    public function user()
+    {
+        return $this->hasMany(User::class,'sid','id');
     }
 }

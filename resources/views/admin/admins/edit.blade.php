@@ -1,5 +1,14 @@
 @include('admin.layouts._meta')
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<style>
+    .salesman {
+    @if ($admin->hasRole('推广员'))
+    display: block;
+        @else
+        display: none;
+    @endif
+    }
+</style>
 </head>
 <body>
 <div class="x-body">
@@ -44,6 +53,39 @@
                        autocomplete="off" class="layui-input">
             </div>
         </div>
+
+        <div class="layui-form-item salesman">
+            <label for="L_pass" class="layui-form-label">
+                <span class="x-red">*</span>渠道名称
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_pass" name="alias" required="" lay-verify="pass"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item salesman">
+            <label for="L_pass" class="layui-form-label">
+                <span class="x-red">*</span>公司名称
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_pass" name="company" required="" lay-verify="pass"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item salesman">
+            <label for="L_pass" class="layui-form-label">
+                <span class="x-red">*</span>结算方式
+            </label>
+            <div class="layui-input-inline">
+                <select name="types">
+                    <option value="">选择结算方式</option>
+                    <option value="微信支付">微信支付</option>
+                    <option value="支付宝支付">支付宝支付</option>
+                    <option value="其他">其他</option>
+                </select>
+            </div>
+        </div>
+
         <div class="layui-form-item">
             <label for="L_repass" class="layui-form-label">
             </label>
@@ -105,7 +147,22 @@
             });
             return false;
         });
+
+        $('.layui-unselect').on('click',function () {
+            if ($(this).children('span').text() == '推广员') {
+                if ($(this).hasClass('layui-form-checked')) {
+                    // 显示出推广员的
+                    $('.salesman').show();
+                    $('.salesman input,select').val('');
+                } else {
+                    // 隐藏掉推广员的
+                    $('.salesman').hide();
+                }
+            }
+        });
+
     });
+
 </script>
 </body>
 </html>

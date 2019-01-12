@@ -18,6 +18,7 @@ class CreateProductPagesTable extends Migration
             $table->integer('pid')->unsigned()->comment('产品外键');
             $table->string('name')->comment('页面名称');
             $table->string('pages')->comment('页面');
+            $table->string('sort')->comment('页面排序');
             $table->timestamps();
         });
     }

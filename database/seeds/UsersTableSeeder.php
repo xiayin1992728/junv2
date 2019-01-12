@@ -31,6 +31,7 @@ class UsersTableSeeder extends Seeder
         $user = User::find(1);
         $user->name = 'xiayin';
         $user->phone = '15108479103';
+        $user->password = bcrypt('15108479103');
         $user->save();
     }
 }

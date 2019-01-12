@@ -29,9 +29,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function admin()
+    public function spread()
     {
-        return $this->belongsTo(Admin::class,'sid','id');
+        return $this->belongsTo(Spread::class);
     }
-
 }

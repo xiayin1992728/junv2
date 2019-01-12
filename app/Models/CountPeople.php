@@ -22,9 +22,4 @@ class CountPeople extends Model
     {
     	return $this->belongsTo(Spread::class,'sid','id');
     }
-
-    // public function getPeopleAttribute($value)
-    // {
-    //     return floor($value);
-    // }
 }

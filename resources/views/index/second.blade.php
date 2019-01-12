@@ -20,13 +20,23 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 @foreach($carousels as $k => $carousel)
+                        @if ($k == 0)
                         <div class="item active">
-                            <a href="{{ $carousels['oneLink'] }}">
-                                <img style="height: 165px" src="{{ env('APP_URL').'/uploads/carousel/'.$carousel }}" alt="...">
+                            <a href="{{ $carousel['url'] }}">
+                                <img style="height: 165px;width: 100%" src="{{ env('APP_URL').$carousel['img'] }}" alt="...">
                             </a>
                             <div class="carousel-caption">
                             </div>
                         </div>
+                        @else
+                            <div class="item">
+                            <a href="{{ $carousel['url'] }}">
+                                <img style="height: 165px;width: 100%" src="{{ env('APP_URL').$carousel['img'] }}" alt="...">
+                            </a>
+                            <div class="carousel-caption">
+                            </div>
+                        </div>
+                        @endif
                 @endforeach
             </div>
 

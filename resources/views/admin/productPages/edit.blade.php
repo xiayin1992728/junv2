@@ -14,7 +14,7 @@
             </div>
         </div>
 
-
+        <input type="hidden" value="{{ $page->id }}" name="id">
 
         <div class="layui-form-item">
             <label for="longtimes" class="layui-form-label">
@@ -31,7 +31,7 @@
                 所属产品
             </label>
             <div class="layui-input-inline">
-                <select name="pid" lay-verify="required">
+                <select name="pid" lay-verify="required" lay-search>
                     <option value="">选择属于哪个产品</option>
                     @foreach($products as $product)
                         @if ($product->id == $page->pid)

@@ -2,6 +2,7 @@
 
 use Faker\Generator as Faker;
 use Carbon\Carbon;
+use App\Models\Spread;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,15 @@ use Carbon\Carbon;
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
     $now = Carbon::now()->toDateTimeString();
+    $spreads = Spread::get()->pluck('id')->toArray();
+    $phone = $faker->phoneNumber;
     return [
         'name' => $faker->name,
         'remember_token' => str_random(10),
-        'phone' => $faker->phoneNumber,
+        'phone' => $phone,
+        'sid' => array_random($spreads),
+        'password' => bcrypt($phone),
+        'change' => random_int(1,100)/100,
         'created_at' => $now,
     	'updated_at' => $now,
     ];

@@ -48,6 +48,9 @@ class AdminsController extends Controller
         $admin->phone = $request->phone;
         $admin->password = bcrypt($request->password);
         $admin->name = $request->name;
+        $admin->alias = $request->alias;
+        $admin->company = $request->company;
+        $admin->types = $request->types;
 
         if ($admin->save()) {
             $admin->assignRole($request->roles);

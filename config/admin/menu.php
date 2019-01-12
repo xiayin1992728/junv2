@@ -49,4 +49,43 @@ return [
         ],
     ],
 
+    /* 渠道管理 */
+ /*   [
+        'icon' => '&#xe656;',
+        'title' => '渠道管理',
+        'son' => [
+            [
+                'title' => '渠道列表',
+                'url' => 'channels.index',
+            ],
+        ],
+    ],*/
+
+    /* 推广管理 */
+    [
+        'icon' => '&#xe667;',
+        'title' => '推广管理',
+        'son' => [
+            [
+                'title' => '推广列表',
+                'url' => 'spreads.index',
+            ],
+            [
+                'title' => '推广统计',
+                'url' => 'countPeoples.index',
+            ],
+        ],
+    ],
+
+    /* 其他设置 */
+    [
+        'icon' => '&#xe716;',
+        'title' => '其他设置',
+        'son' => [
+            [
+                'title' => '轮播设置',
+                'url' => 'admin.carousel.index',
+            ],
+        ],
+    ],
 ];

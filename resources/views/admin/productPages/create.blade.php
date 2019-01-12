@@ -31,7 +31,7 @@
                 所属产品
             </label>
             <div class="layui-input-inline">
-                <select name="pid" lay-verify="required">
+                <select name="pid" lay-verify="required" lay-search>
                     <option value="">选择属于哪个产品</option>
                     @foreach($products as $product)
                         <option value="{{ $product->id }}">{{ $product->name }}</option>

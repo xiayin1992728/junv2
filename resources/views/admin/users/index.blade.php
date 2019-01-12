@@ -60,15 +60,15 @@
             cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'},
                 {field: 'id', title: 'ID', width:80, align:'center', sort: true, fixed: 'left'},
-                {field: 'name', title: '姓名',align:'center'},
-                {field: 'phone', title: '手机号',align:'center'},
-                {field: 'idcard', title: '身份证',align:'center'},
-                {field: 'credit', title: '芝麻分',align:'center'},
-                {field: 'qq', title: 'QQ号',align:'center'},
-                {field: 'weixin', title: '微信号',align:'center'},
-                {field:'sname',title: '推荐者',align: 'center'},
-                {field: 'created_at', title: '创建时间',sort:true,align:'center'},
-                {field: 'updated_at', title: '修改时间',sort:true,align:'center'},
+                {field: 'name', title: '姓名',align:'center',width: 110},
+                {field: 'phone', title: '手机号',align:'center', width:125},
+                {field: 'idcard', title: '身份证',align:'center',width: 200},
+                {field: 'credit', title: '芝麻分',align:'center',width: 90},
+                {field: 'qq', title: 'QQ号',align:'center',width: 130},
+                {field: 'weixin', title: '微信号',align:'center',width: 150},
+                {field:'sname',title: '推荐者',align: 'center',width: 90},
+                {field: 'created_at', title: '创建时间',sort:true,align:'center',width:162},
+                {field: 'updated_at', title: '修改时间',sort:true,align:'center',width: 162},
                     @if(auth()->guard('admin')->user()->can('修改用户') || auth()->guard('admin')->user()->can('删除用户'))
                 {fixed: 'right', width: 165, title: '操作', align:'center', toolbar: '#barDemo'}
                 @endif

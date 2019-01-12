@@ -38,7 +38,7 @@
 
             <div class="btn-container">
                 <div class="btn-groups">
-                    <div class="groups-item" days="7">7天</div>
+                    <div class="groups-item active" days="7">7天</div>
                     <div class="groups-item" days="21">21天</div>
                     <div class="groups-item" days="30">30天</div>
                 </div>
@@ -149,14 +149,13 @@
 
         $('#mashangjie').on('click',function () {
             $("#money").val(parseInt($('.tishikuang').text()));
-            // $('#days').val($('.rs-tooltip').text());
+            $('#days').val($('.btn-groups .active').attr('days'));
 
         });
 
         $('.groups-item').on('click',function(){
             $('.groups-item').removeClass('active');
             $(this).addClass('active');
-            $('#days').val($(this).attr('days'));
         })
     </script>
 @endsection

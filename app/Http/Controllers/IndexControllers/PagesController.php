@@ -49,6 +49,8 @@ class PagesController extends Controller
     {
         $products = Product::where('types','外部产品')->get();
         $carousels = [];
+        $carousel = file_get_contents(public_path().'/settings/carousel.json');
+        $carousels = json_decode($carousel,true);
         $product = $products->slice(0,2);
 
         return view('index.second',[

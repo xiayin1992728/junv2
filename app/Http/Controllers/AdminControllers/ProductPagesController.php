@@ -132,5 +132,18 @@ class ProductPagesController extends Controller
 
         return $where;
     }
+
+    public function getProductPages(ProductPage $productPage,Request $request)
+    {
+        $pid = $request->pid;
+        // 得到该产品的页面
+        $pages = $productPage->where('pid',$pid)->get();
+        //dd(count($pages) == 0);
+        if (!count($pages) == 0) {
+            return ['status' => 200,'data'=> $pages];
+        } else {
+            return ['status' => 402,'msg' => '没有该产品的页面数据，请去产品页面添加。'];
+        }
+    }
 }
 
