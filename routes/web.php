@@ -3,7 +3,7 @@
 Route::namespace('IndexControllers')->group(function() {
 
     Route::middleware(['guest:web'])->group(function() {
-        Route::get('/{arg?}','PagesController@home')->where(['arg' => '[a-zA-z0-9]*=='])->name('index.login');
+        Route::get('/{arg}','PagesController@home')->where(['arg' => '[a-zA-z0-9]*=='])->name('index.login');
         Route::post('message','HomeController@message')->name('message');
         Route::post('user','HomeController@store')->name('home.user.store');
     });
