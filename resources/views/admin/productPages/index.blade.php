@@ -38,6 +38,11 @@
         var table = layui.table;
         var laydate = layui.laydate;
         var form = layui.form;
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         //执行一个laydate实例
         laydate.render({
             elem: '#start', //指定元素
@@ -67,7 +72,8 @@
                     fixed: 'left',
                 },
                 {field: 'name', title: '页面名称', align: 'center', width: 180},
-                {field: 'pages', title: '页面链接', align: 'center', width: 500},
+                {field: 'sort', title: '页面排序', align: 'center', width: 90,edit:true},
+                {field: 'pages', title: '页面链接', align: 'center', width: 500,edit:true},
                 {field: 'productPages', title: '所属产品', align: 'center', width: 200},
                 {field: 'created_at', title: '创建时间', sort: true, align: 'center', width: 200},
                 {field: 'updated_at', title: '修改时间', sort: true, align: 'center', width: 200},
@@ -104,11 +110,6 @@
                 layer.confirm('确认删除数据吗?', function (index) {
                     layer.close(index);
                     //向服务端发送删除指令
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
                     $.ajax({
                         url: "{{ config('app.url') }}" + '/admin/productPages/' + obj.data.id,
                         type: 'delete',
@@ -139,6 +140,25 @@
                 where: data.field //设定异步数据接口的额外参数
             });
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+
+        table.on('edit(productPages)', function(obj){ //注：edit是固定事件名，test是table原始容器的属性 lay-filter="对应的值"
+            console.log(obj.value); //得到修改后的值
+            console.log(obj.field); //当前编辑的字段名
+            console.log(obj.data); //所在行的所有相关数据
+            $.ajax({
+                url: "{{ config('app.url') }}"+'/admin/productPages/'+obj.data.id,
+                type: 'put',
+                data:obj.data,
+                dataType: 'json',
+                success: function (res) {
+                    if (res.status == 200) {
+                        layer.msg(res.msg,{icon:6});
+                    } else {
+                        layer.msg(res.msg,{icon:5});
+                    }
+                }
+            });
         });
     });
 </script>

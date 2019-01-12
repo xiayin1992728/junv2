@@ -15,6 +15,15 @@
         </div>
 
 
+        <div class="layui-form-item">
+            <label for="name" class="layui-form-label">
+                页面排序
+            </label>
+            <div class="layui-input-inline">
+                <input type="number" id="name" name="sort"
+                       autocomplete="off" class="layui-input" lay-verify="required">
+            </div>
+        </div>
 
         <div class="layui-form-item">
             <label for="longtimes" class="layui-form-label">

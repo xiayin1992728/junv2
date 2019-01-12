@@ -47,6 +47,7 @@ class ProductPagesController extends Controller
         $page->pages = $this->addHttp($request->pages);
         $page->name = $request->name;
         $page->pid = $request->pid;
+        $page->sort = $request->sort;
 
         if ($page->save()) {
             return ['status' => 200,'msg' => '添加成功'];
@@ -68,6 +69,7 @@ class ProductPagesController extends Controller
     {
         $productPage->name = $request->name;
         $productPage->pid = $request->pid;
+        $productPage->sort = $request->sort;
         $productPage->pages = $this->addHttp($request->pages);
 
 

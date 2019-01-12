@@ -14,6 +14,16 @@
             </div>
         </div>
 
+        <div class="layui-form-item">
+            <label for="name" class="layui-form-label">
+                页面排序
+            </label>
+            <div class="layui-input-inline">
+                <input type="number" id="name" name="sort"
+                       autocomplete="off" value="{{ $page->sort }}" class="layui-input" lay-verify="required">
+            </div>
+        </div>
+
         <input type="hidden" value="{{ $page->id }}" name="id">
 
         <div class="layui-form-item">
