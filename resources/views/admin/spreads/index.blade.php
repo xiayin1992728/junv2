@@ -75,7 +75,7 @@
                     fixed: 'left',
                 },
                 {field: 'number', title: '流水号', align: 'center', width: 180},
-                {field: 'link', title: '推广链接', align: 'center', width: 500},
+                {field: 'link', title: '推广链接', align: 'center', width: 500,height:60},
                 {field: 'productName', title: '所属产品', align: 'center', width: 200},
                 {field: 'adminName', title: '所属推广者', align: 'center', width: 200},
                 {field: 'pagesText', title: '页面控制', align: 'center', width: 200},
@@ -84,7 +84,7 @@
                 {field: 'updated_at', title: '修改时间', sort: true, align: 'center', width: 200},
                     @if(auth()->guard('admin')->user()->can('修改推广') || auth()->guard('admin')->user()->can('删除推广'))
                 {
-                    fixed: 'right', width: 165, title: '操作', align: 'center', toolbar: '#barDemo'
+                    fixed: 'right', width: 165, height: 60, title: '操作', align: 'center', toolbar: '#barDemo'
                 }
                 @endif
             ]],
