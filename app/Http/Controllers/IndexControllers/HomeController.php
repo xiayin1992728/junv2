@@ -71,10 +71,6 @@ class HomeController extends Controller
         $res = $user::where('phone', $request->phone)->first();
         if (!$res) {
             $user = $this->add($user, $request);
-            dd($user);
-            if (!$user) {
-                return redirect('/'.$request->arg);
-            }
         } else {
             $user = $res;
         }
