@@ -3,7 +3,7 @@
 @section('title','发现')
 
 @section('css')
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="/css/index/find.css">
 @endsection
 
 @section('content')
