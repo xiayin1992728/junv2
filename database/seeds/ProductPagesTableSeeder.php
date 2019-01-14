@@ -12,7 +12,6 @@ class ProductPagesTableSeeder extends Seeder
      */
     public function run()
     {
-        dd(conifg('app.url'));
        $data = [
            [
                'pid' => 1,
