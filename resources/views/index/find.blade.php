@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('index.layouts.app')
 
 @section('title','发现')
 

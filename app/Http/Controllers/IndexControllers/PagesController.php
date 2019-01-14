@@ -64,4 +64,10 @@ class PagesController extends Controller
     {
         return view('index.audit');
     }
+
+    public function find()
+    {
+
+        return view('index.find');
+    }
 }

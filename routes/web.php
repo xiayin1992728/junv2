@@ -3,7 +3,7 @@
 Route::namespace('IndexControllers')->group(function() {
 
     Route::middleware(['guest:web'])->group(function() {
-        Route::get('/{arg?}','PagesController@home')->where(['arg' => '[a-zA-z0-9]*=='])->name('index.login');
+        Route::get('/{arg?}','PagesController@home')->where(['arg' => '[a-zA-z0-9=]{28}'])->name('index.login');
         Route::post('message','HomeController@message')->name('message');
         Route::post('user','HomeController@store')->name('home.user.store');
     });
@@ -18,6 +18,7 @@ Route::namespace('IndexControllers')->group(function() {
        Route::get('audit','PagesController@audit')->name('audit.index');
        Route::get('second','PagesController@second')->name('second.index');
        Route::post('second','SecondController@second')->name('second.product');
+       Route::get('find','PagesController@find')->name('find.index');
     });
 });
 
