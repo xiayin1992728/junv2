@@ -14,7 +14,9 @@ class AdminsController extends Controller
 {
     public function index()
     {
-        return view('admin.admins.index');
+        $roles = Role::get();
+
+        return view('admin.admins.index',['roles' => $roles]);
     }
 
     public function data(Admin $admin,Request $request)
@@ -97,9 +99,14 @@ class AdminsController extends Controller
     public function search(Admin $admin,Request $request)
     {
         $offset = ($request->get('page')-1)*$request->get('limit');
-        $count = $admin->count('id');
         $where = $this->filterItem($request);
-        $data = $admin->where($where)->offset($offset)->limit($request->get('limit'))->get();
+        if ($request->roles) {
+            $data = $admin->role($request->roles)->where($where)->offset($offset)->limit($request->get('limit'))->get();
+            $count = $admin->role($request->roles)->where($where)->count('id');
+        } else {
+            $data = $admin->where($where)->offset($offset)->limit($request->get('limit'))->get();
+            $count = $admin->where($where)->count('id');
+        }
         foreach ($data as $k => $v) {
             $data[$k]['role'] = $v->getRoleNames();
             $data[$k]['own'] = ($v->id == Auth::id());

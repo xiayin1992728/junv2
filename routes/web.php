@@ -41,6 +41,11 @@ Route::namespace('AdminControllers')->prefix('admin')->group(function() {
        Route::get('admin/data','AdminsController@data')->name('admin.admin.data');
        Route::get('admin/search','AdminsController@search')->name('admin.admin.search');
 
+       // 推广员
+       Route::get('salesman/{id}','SalesmansController@index')->name('admin.salesman.index');
+       Route::get('salesman/{id}/data','SalesmansController@data')->name('admin.salesman.data');
+       Route::get('salesman/{id}/search','SalesmansController@search')->name('admin.salesman.search');
+
        // 权限
        Route::resource('permissions','PermissionsController',['except' => ['show']]);
        Route::get('permissions.data','PermissionsController@data')->name('admin.permissions.data');

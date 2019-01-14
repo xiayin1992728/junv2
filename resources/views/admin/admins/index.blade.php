@@ -11,6 +11,14 @@
         <form class="layui-form layui-col-md12 x-so">
             <input class="layui-input" placeholder="开始日" autocomplete="off" name="start" id="start">
             <input class="layui-input" placeholder="截止日" autocomplete="off" name="end" id="end">
+            <div class="layui-input-inline">
+                <select name="roles">
+                    <option value="">选择角色</option>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                        @endforeach
+                </select>
+            </div>
             <input type="text" name="phone"  placeholder="请输入手机号" autocomplete="off" class="layui-input">
             <button class="layui-btn"  lay-submit="" lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
         </form>
@@ -26,6 +34,13 @@
         @{{# if(d.del && !d.own) { }}
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
         @{{# } }}
+</script>
+<script type="text/html" id="Detail">
+    @{{# if(d.role == '推广员' ) { }}
+        <a href="{{ config('app.url').'/admin/salesman/' }}@{{ d.id }}"> @{{ d.name }}</a>
+    @{{# }else { }}
+        <span>@{{ d.name }}</span>
+    @{{# } }}
 </script>
 <script>
     layui.use(['table','laydate','form'], function(){
@@ -53,7 +68,7 @@
             cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'},
                 {field: 'id', title: 'ID', width:80, align:'center', sort: true, fixed: 'left'},
-                {field: 'name', title: '用户名',align:'center'},
+                {field: 'name', title: '用户名',align:'center',templet: '#Detail'},
                 {field: 'role', title: '角色',align:'center'},
                 {field: 'phone', title: '手机号',align:'center'},
                 {field: 'created_at', title: '创建时间',sort:true,align:'center'},
