@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\IndexControllers;
 
 use Auth;
+use Log;
 use App\Models\Spread;
 use App\Models\CountPeople;
 use Overtrue\EasySms\EasySms;
@@ -121,7 +122,6 @@ class HomeController extends Controller
                 );
             } catch (\Overtrue\EasySms\Exceptions\NoGatewayAvailableException $exception) {
                 $message = $exception->getException('aliyun')->getMessage();
-
                 return response(['errors' => $message ?? '短信发送异常']);
             }
         }

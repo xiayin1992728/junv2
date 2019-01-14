@@ -20,9 +20,9 @@ return [
             'file' => '/tmp/easy-sms.log',
         ],
         'aliyun' => [
-            'access_key_id' => env('ALIYUN_ACCESS_KEY_ID'),
-            'access_key_secret' => env('ALIYUN_ACCESS_KEY_SECRET'),
-            'sign_name' => env('ALIYUN_SIGN_NAME'),
+            'access_key_id' => env('ALIYUN_KEY_ID'),
+            'access_key_secret' => env('ALIYUN_KEY_SECRET'),
+            'sign_name' => env('ALIYUN_SIGN'),
         ],
     ],
 ];
