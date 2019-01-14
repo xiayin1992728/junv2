@@ -28,14 +28,16 @@ class VerifyController extends Controller
 
         if ($user->save()) {
             // 更新后台实名认证数量
-            $time = date('Y-m-d',time());
-            if ($countPeople = $countPeople->where('create_time',$time)->first()) {
-                $countPeople->verify = $countPeople->verify + $user->change;
-            } else {
-                $spread = Spread::where('id',$user->sid)->first();
-                $countPeople->verify = $user->change;
-                $countPeople->sid = $user->sid;
-                $countPeople->uid = $spread->admin->id;
+            if ($user->sid) {
+                $time = date('Y-m-d',time());
+                if ($countPeople = $countPeople->where('create_time',$time)->first()) {
+                    $countPeople->verify = $countPeople->verify + $user->change;
+                } else {
+                    $spread = Spread::where('id',$user->sid)->first();
+                    $countPeople->verify = $user->change;
+                    $countPeople->sid = $user->sid;
+                    $countPeople->uid = $spread->admin->id;
+                }
             }
             $countPeople->save();
         }
