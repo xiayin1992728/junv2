@@ -43,7 +43,7 @@ class CheckLink
                     }
                     break;
                 } else if($k > (count($auth)-1)) {
-                    return redirect($pages[$k]);
+                    return redirect($pages[count($auth)-1]);
                 }
             }
         }

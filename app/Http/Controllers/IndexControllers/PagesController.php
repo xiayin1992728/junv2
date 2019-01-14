@@ -47,7 +47,7 @@ class PagesController extends Controller
 
     public function second()
     {
-        $products = Product::where('types','外部产品')->get();
+        $products = Product::where('types','外部产品')->where('status',1)->get();
         $carousels = [];
         $carousel = file_get_contents(public_path().'/settings/carousel.json');
         $carousels = json_decode($carousel,true);

@@ -84,6 +84,8 @@ Route::namespace('AdminControllers')->prefix('admin')->group(function() {
        Route::post('carousel','CarouselController@store')->name('admin.carousel.store');
        Route::post('carousel/uploads','CarouselController@upload')->name('admin.carousel.upload');
 
+       Route::get('find','FindController@index')->name('admin.find.index');
+       Route::post('find','FindController@store')->name('admin.find.store');
    });
 
 });

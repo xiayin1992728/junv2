@@ -9,7 +9,7 @@ class SecondController extends Controller
 {
     public function second(Product $product)
     {
-        $products = $product->where('types','外部产品')->get();
+        $products = $product->where('types','外部产品')->where('status',1)->get();
 
         return ['data' => $products];
     }
