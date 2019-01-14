@@ -76,7 +76,7 @@
                     fixed: 'left',
                 },
                 {field: 'number', title: '流水号', align: 'center', width: 180},
-                {field: 'link', title: '推广链接', align: 'center',height:50},
+                {field: 'link', title: '推广链接', align: 'center', width:800,height:50},
                 {field: 'productName', title: '所属产品', align: 'center', width: 200},
                 {field: 'adminName', title: '所属推广者', align: 'center', width: 200},
                 {field: 'pagesText', title: '页面控制', align: 'center', width: 200},
