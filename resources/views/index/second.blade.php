@@ -85,7 +85,7 @@
                 <div class="miao_list">
                     <div class="top">
                         <div class="left">
-                            <i><img src="{{ env('APP_URL').'/uploads/products/'.$product->logo }}"></i>
+                            <i><img src="{{ config('app.url').$product->logo }}"></i>
                             <div>
                                 <p>{{ $product->name }}</p>
                                 <span><strong>{{ $product->maxs }}</strong>元</span>
@@ -169,7 +169,7 @@
             let money = range(3000,10000,500);
             let html = '<div class="xiakuan-container">\n' +
                 '                    <div class="left">\n' +
-                '                        <i><img src="'+window.location.protocol+'/uploads/products/'+logo[n].logo+'" alt=""></i>\n' +
+                '                        <i><img src="'+window.location.protocol+logo[n].logo+'" alt=""></i>\n' +
                 '                    </div>\n' +
                 '                    <div class=\'right\'>\n' +
                 '                        <h6>'+logo[n].name+'</h6>\n' +
