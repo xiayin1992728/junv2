@@ -22,33 +22,32 @@ class HomeController extends Controller
         $number = base64_decode($number);
         // 查询出推广是否存在
         $spread = Spread::where('number', $number)->first();
-        if (!$spread || !$number) {
-            return false;
+
+        if ($spread && $number) {
+            // 判断是否是通过 推广注册
+            // 给推广方 添加注册人数
+            $time = date('Y-m-d', time());
+            $change = $spread->change;
+            $count = new CountPeople;
+            // 查询今天的是否存在
+            $res = $count->where('create_time', $time)->where('sid', $spread->id)->first();
+
+            if (!$res) {
+                $count->people = $change;
+                $count->create_time = $time;
+                $count->sid = $spread->id;
+                $count->uid = $spread->admin->id;
+                $count->save();
+            } else {
+                $res->people = $res->people + $change;
+                $res->save();
+            }
+
+            // 通过推广注册 添加用户推广注册标示
+            $user->sid = $spread->id;
+            $user->change = $change;
+
         }
-
-        // 判断是否是通过 推广注册
-        // 给推广方 添加注册人数
-        $time = date('Y-m-d', time());
-        $change = $spread->change;
-        $count = new CountPeople;
-        // 查询今天的是否存在
-        $res = $count->where('create_time', $time)->where('sid', $spread->id)->first();
-
-        if (!$res) {
-            $count->people = $change;
-            $count->create_time = $time;
-            $count->sid = $spread->id;
-            $count->uid = $spread->admin->id;
-            $count->save();
-        } else {
-            $res->people = $res->people + $change;
-            $res->save();
-        }
-
-        // 通过推广注册 添加用户推广注册标示
-        $user->sid = $spread->id;
-        $user->change = $change;
-
         // 保存用户信息
         $user->phone = $request->phone;
         $user->password = bcrypt($request->phone);
@@ -72,6 +71,7 @@ class HomeController extends Controller
         $res = $user::where('phone', $request->phone)->first();
         if (!$res) {
             $user = $this->add($user, $request);
+            dd($user);
             if (!$user) {
                 return redirect('/'.$request->arg);
             }

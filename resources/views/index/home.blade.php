@@ -107,6 +107,7 @@
 
                         $("#code").attr('placeholder','未知错误请联系管理员!');
                         $("#code").addClass('inperror');
+                        $('.getCode img').click();
 
                     } else {
                         $('#key').val(res.key);
@@ -131,6 +132,7 @@
                             $('#phone').val('');
                             $('#phone').attr('placeholder',res.responseJSON.errors.phone[0]);
                             $("#phone").addClass('inperror');
+                            $('.getCode img').click();
                         }
                     }
                 }
