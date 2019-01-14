@@ -65,14 +65,13 @@
                 @foreach($product as $k => $v)
                     <div class="xiakuan-container">
                         <div class="left">
-                            <i><img  src="{{ env('APP_URL').'/uploads/products/'.$v->logo}}" alt=""></i>
+                            <i><img  src="{{ config('app.url').$v->logo}}" alt=""></i>
                         </div>
                         <div class='right'>
                             <h6>{{ $v->name }}</h6>
                             <p> <span>{{ '1'.random_int(3,8).random_int(1,9).'****'.random_int(1000,9999) }}</span> 下款 <strong>4500</strong> 成功</p>
                         </div>
                     </div>
-
                 @endforeach
             </div>
         </div>
