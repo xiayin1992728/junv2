@@ -59,4 +59,9 @@ class PagesController extends Controller
             'product' => $product
         ]);
     }
+
+    public function audit()
+    {
+        return view('index.audit');
+    }
 }

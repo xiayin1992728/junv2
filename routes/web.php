@@ -15,6 +15,7 @@ Route::namespace('IndexControllers')->group(function() {
        Route::post('verify','VerifyController@store')->name('verify.store');
        Route::get('feature','PagesController@feature')->name('feature.index');
        Route::get('continue','PagesController@continue')->name('continue.index');
+       Route::get('audit','PagesController@audit')->name('audit.index');
        Route::get('second','PagesController@second')->name('second.index');
        Route::post('second','SecondController@second')->name('second.product');
     });
