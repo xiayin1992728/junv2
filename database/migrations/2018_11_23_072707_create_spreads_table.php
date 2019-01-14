@@ -30,6 +30,9 @@ class CreateSpreadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('spreads');
+        Schema::dropIfExists('spreads',function (Blueprint $table) {
+            //$table->dropForeign('uid');
+            //$table->dropForeign('pid');
+        });
     }
 }
