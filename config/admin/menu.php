@@ -88,7 +88,7 @@ return [
             ],
             [
                 'title' => '发现设置',
-                'url' => 'carousel.index',
+                'url' => 'admin.find.index',
             ],
         ],
     ],

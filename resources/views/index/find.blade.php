@@ -15,12 +15,12 @@
             <h3 class="text-center" style="color: orange">联系我们</h3>
             <p class="text-center" style="color: orange">长按识别二维码添加客服</p>
             <div class="code">
-                <img src="/images/code.jpg" style="width: 100px" alt="">
+                <img src="static/index/find/code.jpg" style="width: 100px" alt="">
             </div>
             <p class="tuijian"></p>
 
             <p class="kefu"></p>
-            <hr/ class="fenge">
+            <hr class="fenge" />
 
             <div class="notice">
                 <div class="notice-title">

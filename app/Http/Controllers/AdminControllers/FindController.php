@@ -13,30 +13,18 @@ class FindController extends Controller
         $contents = json_decode($contents,true);
         if (!$contents) {
             $contents = [
-                [
-                    'url' => '',
-                    'img' => '',
-                ],
-                [
-                    'url' => '',
-                    'img' => '',
-                ],
-                [
-                    'url' => '',
-                    'img' => '',
-                ],
+                'notice' => '',
+                'server' => '',
+                'recommend' => ''
             ];
         }
-        return view('admin.find.index',['contents' => $contents]);
+        return view('admin.find.index',['content' => $contents]);
     }
 
     public function store(Request $request)
     {
         $handle = fopen(public_path().'/settings/find.json','w+');
-        $content = $request->post('carousel');
-        foreach ($content as $k => $v) {
-            $content[$k]['url'] = $this->addHttp($v['url']);
-        }
+        $content = $request->post();
         $result = fwrite($handle,json_encode($content));
         fclose($handle);
         if ($result) {
