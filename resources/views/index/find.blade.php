@@ -17,9 +17,9 @@
             <div class="code">
                 <img src="static/index/find/code.jpg" style="width: 100px" alt="">
             </div>
-            <p class="tuijian"></p>
+            <p class="tuijian">{{ $content['recommend'] }}</p>
 
-            <p class="kefu"></p>
+            <p class="kefu">{{ $content['server'] }}</p>
             <hr class="fenge" />
 
             <div class="notice">
@@ -27,7 +27,7 @@
                     注意：
                 </div>
                 <div class="notice-content">
-
+                        {!! $content['notice'] !!}
                 </div>
             </div>
         </div>

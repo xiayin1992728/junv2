@@ -67,7 +67,15 @@ class PagesController extends Controller
 
     public function find()
     {
-
-        return view('index.find');
+        $contents = file_get_contents(public_path().'/settings/find.json');
+        $contents = json_decode($contents,true);
+        if (!$contents) {
+            $contents = [
+                'notice' => '',
+                'server' => '',
+                'recommend' => ''
+            ];
+        }
+        return view('index.find',['content' => $contents]);
     }
 }
