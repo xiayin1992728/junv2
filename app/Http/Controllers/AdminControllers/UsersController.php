@@ -22,7 +22,7 @@ class UsersController extends Controller
         $count = $user->count('id');
         $data = $user->offset($offset)->limit($request->get('limit'))->get();
         foreach ($data as $k => $v) {
-            $data[$k]['sname'] = $v->spread->admin->name;
+            $data[$k]['sname'] = $v->sid ? $v->spread->admin->name : '';
             $data[$k]['del'] = Auth::guard('admin')->user()->can('删除用户');
             $data[$k]['edit'] = Auth::guard('admin')->user()->can('修改用户');
         }

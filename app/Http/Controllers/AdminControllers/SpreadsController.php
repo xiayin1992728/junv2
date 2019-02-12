@@ -71,8 +71,6 @@ class SpreadsController extends Controller
     {
         $products = $product->get();
         $admins = $admin->role('推广员')->get();
-            //dd($spread->product->productPage);
-        //dd($spread->productPage->pluck('id')->toArray());
         return view('admin.spreads.edit',[
             'products' => $products,
             'admins' => $admins,
@@ -84,7 +82,6 @@ class SpreadsController extends Controller
 
     public function update(Spread $spread,SpreadRequest $request)
     {
-        //dd($request->all());
         $spread->uid = $request->uid;
         $spread->pid = $request->pid;
         $spread->change = $request->change;
