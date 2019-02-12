@@ -70,6 +70,7 @@ class SeedRolesAndPermissionsData extends Migration
         // 其他设置
         Permission::create(['name' => '其他设置','guard_name' => 'admin']);
         Permission::create(['name' => '轮播设置','guard_name' => 'admin']);
+        Permission::create(['name' => '发现设置','guard_name' => 'admin']);
 
         // 创建超级管理，并赋予权限
         $super = Role::create(['name' => '超级管理员','guard_name' => 'admin']);

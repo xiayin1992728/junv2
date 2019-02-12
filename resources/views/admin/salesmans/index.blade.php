@@ -19,7 +19,7 @@
         <button class="layui-btn">当天注册总数<span id="register" class="layui-badge layui-bg-gray"></span></button>
         <button class="layui-btn">当天认证总数<span id="verify" class="layui-badge layui-bg-gray"></span></button>
     </div>
-    <table id="countPeoples" lay-filter="countPeoples" lay-data="{id: 'countPeoples'}"></table>
+    <table id="salesman" lay-filter="salesman" lay-data="{id: 'salesman'}"></table>
 </div>
 @include('admin.layouts._footer')
 <script>
@@ -41,9 +41,9 @@
 
         //第一个实例
         table.render({
-            elem: '#countPeoples',
+            elem: '#salesman',
             height: 'full-200',
-            url: "{{ route('admin.countPeoples.data') }}", //数据接口
+            url: "{{ route('admin.salesman.data',['id' => $id]) }}", //数据接口
             page: {limits: [10, 20, 50, 100, 400]}, //开启分页
             cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'},
@@ -70,8 +70,8 @@
         // 搜索
         form.on('submit(search)', function (data) {
             console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
-            table.reload('countPeoples', {
-                url: "{{ route('admin.countPeoples.search') }}",
+            table.reload('salesman', {
+                url: "{{ route('admin.salesman.search',['id' => $id]) }}",
                 where: data.field //设定异步数据接口的额外参数
             });
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。

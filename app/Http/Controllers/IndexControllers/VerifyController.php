@@ -38,8 +38,8 @@ class VerifyController extends Controller
                     $countPeople->sid = $user->sid;
                     $countPeople->uid = $spread->admin->id;
                 }
+                $countPeople->save();
             }
-            $countPeople->save();
         }
 
         return redirect()->route('feature.index');

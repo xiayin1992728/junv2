@@ -65,14 +65,13 @@
                 @foreach($product as $k => $v)
                     <div class="xiakuan-container">
                         <div class="left">
-                            <i><img  src="{{ env('APP_URL').'/uploads/products/'.$v->logo}}" alt=""></i>
+                            <i><img  src="{{ config('app.url').$v->logo}}" alt=""></i>
                         </div>
                         <div class='right'>
                             <h6>{{ $v->name }}</h6>
                             <p> <span>{{ '1'.random_int(3,8).random_int(1,9).'****'.random_int(1000,9999) }}</span> 下款 <strong>4500</strong> 成功</p>
                         </div>
                     </div>
-
                 @endforeach
             </div>
         </div>
@@ -86,7 +85,7 @@
                 <div class="miao_list">
                     <div class="top">
                         <div class="left">
-                            <i><img src="{{ env('APP_URL').'/uploads/products/'.$product->logo }}"></i>
+                            <i><img src="{{ config('app.url').$product->logo }}"></i>
                             <div>
                                 <p>{{ $product->name }}</p>
                                 <span><strong>{{ $product->maxs }}</strong>元</span>
@@ -170,7 +169,7 @@
             let money = range(3000,10000,500);
             let html = '<div class="xiakuan-container">\n' +
                 '                    <div class="left">\n' +
-                '                        <i><img src="'+window.location.protocol+'/uploads/products/'+logo[n].logo+'" alt=""></i>\n' +
+                '                        <i><img src="'+window.location.protocol+logo[n].logo+'" alt=""></i>\n' +
                 '                    </div>\n' +
                 '                    <div class=\'right\'>\n' +
                 '                        <h6>'+logo[n].name+'</h6>\n' +

@@ -28,7 +28,9 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('accumulation')->nullable()->comment('是否有公积金 0没有 1有')->default(0);
             $table->tinyInteger('insurance')->nullable()->comment('是否有社保 0没有 1有')->default(0);
             $table->decimal('change',4,2)->comment('流量统计')->default(0);
+            $table->integer('sid')->unsigned()->nullable()->comment('推荐注册外键,0表示没通过推荐注册');
             $table->rememberToken()->comment('记住我');
+            //$table->foreign('sid')->references('id')->on('spreads')->onDelete('SET NULL');
             $table->timestamps();
         });
     }
@@ -40,6 +42,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('users',function (Blueprint $table) {
+            //$table->dropForeign('sid');
+        });
     }
 }

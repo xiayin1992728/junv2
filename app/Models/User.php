@@ -31,6 +31,6 @@ class User extends Authenticatable
 
     public function spread()
     {
-        return $this->belongsTo(Spread::class);
+        return $this->belongsTo(Spread::class,'sid','id');
     }
 }

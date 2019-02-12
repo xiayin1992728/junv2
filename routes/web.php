@@ -3,7 +3,7 @@
 Route::namespace('IndexControllers')->group(function() {
 
     Route::middleware(['guest:web'])->group(function() {
-        Route::get('/{arg?}','PagesController@home')->where(['arg' => '[a-zA-z0-9]*=='])->name('index.login');
+        Route::get('/{arg?}','PagesController@home')->where(['arg' => '[a-zA-z0-9=]{28}'])->name('index.login');
         Route::post('message','HomeController@message')->name('message');
         Route::post('user','HomeController@store')->name('home.user.store');
     });
@@ -15,8 +15,10 @@ Route::namespace('IndexControllers')->group(function() {
        Route::post('verify','VerifyController@store')->name('verify.store');
        Route::get('feature','PagesController@feature')->name('feature.index');
        Route::get('continue','PagesController@continue')->name('continue.index');
+       Route::get('audit','PagesController@audit')->name('audit.index');
        Route::get('second','PagesController@second')->name('second.index');
        Route::post('second','SecondController@second')->name('second.product');
+       Route::get('find','PagesController@find')->name('find.index');
     });
 });
 
@@ -38,6 +40,11 @@ Route::namespace('AdminControllers')->prefix('admin')->group(function() {
        Route::resource('admin','AdminsController',['except' => ['show']]);
        Route::get('admin/data','AdminsController@data')->name('admin.admin.data');
        Route::get('admin/search','AdminsController@search')->name('admin.admin.search');
+
+       // 推广员
+       Route::get('salesman/{id}','SalesmansController@index')->name('admin.salesman.index');
+       Route::get('salesman/{id}/data','SalesmansController@data')->name('admin.salesman.data');
+       Route::get('salesman/{id}/search','SalesmansController@search')->name('admin.salesman.search');
 
        // 权限
        Route::resource('permissions','PermissionsController',['except' => ['show']]);
@@ -77,6 +84,8 @@ Route::namespace('AdminControllers')->prefix('admin')->group(function() {
        Route::post('carousel','CarouselController@store')->name('admin.carousel.store');
        Route::post('carousel/uploads','CarouselController@upload')->name('admin.carousel.upload');
 
+       Route::get('find','FindController@index')->name('admin.find.index');
+       Route::post('find','FindController@store')->name('admin.find.store');
    });
 
 });

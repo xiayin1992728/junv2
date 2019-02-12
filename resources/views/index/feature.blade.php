@@ -22,7 +22,7 @@
     <script type="text/javascript">
         window.onload = function () {
             setTimeout(function () {
-                window.location.href = "{{ route('continue.index') }}"
+                window.location.href = "{{ route('audit.index') }}"
             },5000);
         }
         let num = 0;

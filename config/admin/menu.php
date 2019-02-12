@@ -86,6 +86,10 @@ return [
                 'title' => '轮播设置',
                 'url' => 'admin.carousel.index',
             ],
+            [
+                'title' => '发现设置',
+                'url' => 'admin.find.index',
+            ],
         ],
     ],
 ];
