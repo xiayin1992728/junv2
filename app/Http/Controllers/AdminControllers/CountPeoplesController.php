@@ -32,12 +32,12 @@ class CountPeoplesController extends Controller
             $verifyNumber = ($verifyNumber = $countPeople->where('uid',$currentUser->id)->where('create_time',$time)->first()) ? $verifyNumber->verify : 0;
             $spreads = $currentUser->spread->pluck('id')->toArray();
             $limit = ($request->get('limit') > floor($registerNumber)) ? floor($registerNumber) : $request->get('limit');
-            $data = $user->whereIn('id',$spreads)->offset($offset)->limit($limit)->orderByDesc('id')->get()->toArray();
+            $data = $user->whereIn('sid',$spreads)->offset($offset)->limit($limit)->orderByDesc('id')->get()->toArray();
             $data = $this->filterData($data);
         } else {
             $registerNumber = $countPeople->where('create_time',$time)->sum('people');
             $verifyNumber = $countPeople->where('create_time',$time)->sum('verify');
-            $data = $user->where('sid','<>',0)->offset($offset)->limit($request->limit)->orderByDesc('id')->get()->toArray();
+            $data = $user->where('sid','<>',0)->offset($offset)->limit(floor($registerNumber))->orderByDesc('id')->get()->toArray();
         }
         return [
             'code'=> 0,
