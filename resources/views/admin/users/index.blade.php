@@ -73,11 +73,12 @@
                 {fixed: 'right', width: 165, title: '操作', align:'center', toolbar: '#barDemo'}
                 @endif
             ]],
-            @if(auth()->guard('admin')->user()->can('添加用户'))
+            {{--@if(auth()->guard('admin')->user()->can('添加用户'))
             toolbar:'<div><button class="layui-btn" onclick="x_admin_show(\'添加前台用户\',\'{{ route('user.create') }}\',\'1000\',\'400\')"><i class="layui-icon"></i>添加</button></div>',
             @else
             toolbar:'true',
-            @endif
+            @endif--}}
+            toolbar:'true',
             defaultToolbar:['filter', 'print','exports'],
         });
 
