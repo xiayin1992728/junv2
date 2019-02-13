@@ -37,15 +37,23 @@ class CheckLink
             $mark = array_search($url,$pages);
             // 遍历执行顺序 对比 每个页面是否有权限
             foreach ($pages as $k => $v) {
+                if ($mark === false) {
+                    return redirect($pages[0]);
+                }
+
                 if ($k == $mark && in_array($url,$auth)) {
                     if ($idcard && $url == config('app.url').'/verify') {
                         return redirect($pages[$k+1]);
                     }
                     break;
-                } else if($k > (count($auth)-1)) {
-                    return redirect($pages[count($auth)-1]);
                 }
+
+                if (!in_array($url,$auth) && $k == $mark) {
+                    return redirect($pages[$k+1]);
+                }
+
             }
+
         }
 
         return $next($request);
