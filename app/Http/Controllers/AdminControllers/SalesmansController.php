@@ -19,16 +19,17 @@ class SalesmansController extends Controller
     {
         $salesman = $admin->find($id);
         $offset = ($request->get('page')-1)*$request->get('limit');
-        $registerNumber = ($registerNumber = $countPeople->where('uid', $id)->first()) ? $registerNumber->people : 0;
-        $verifyNumber = ($verifyNumber = $countPeople->where('uid',$id)->first()) ? $verifyNumber->verify : 0;
+        $time = date('Y-m-d',time());
+        $registerNumber = ($registerNumber = $countPeople->where('uid', $id)->where('create_time',$time)->first()) ? $registerNumber->people : 0;
+        $verifyNumber = ($verifyNumber = $countPeople->where('uid',$id)->where('create_time',$time)->first()) ? $verifyNumber->verify : 0;
         $spreads = $salesman->spread->pluck('id')->toArray();
         $limit = ($request->get('limit') > floor($registerNumber)) ? floor($registerNumber) : $request->get('limit');
-        $data = $user->whereIn('id', $spreads)->offset($offset)->limit($limit)->orderByDesc('id')->get()->toArray();
+        $data = $user->whereIn('sid', $spreads)->offset($offset)->limit($limit)->orderByDesc('id')->get()->toArray();
 
         return [
             'code' => 0,
             'msg' => '',
-            'count' => floor($registerNumber),
+            'count' => floor($registerNumber) ,
             'data' => $data,
             'registerNumber' => floor($registerNumber),
             'verifyNumber' => floor($verifyNumber),

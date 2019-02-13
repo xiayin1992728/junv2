@@ -26,9 +26,9 @@
 </div>
 @include('admin.layouts._footer')
 <script type="text/html" id="barDemo">
-    @{{# if(d.edit) { }}
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-    @{{# } }}
+    {{--@{{# if(d.edit) { }}--}}
+    {{--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>--}}
+    {{--@{{# } }}--}}
 
     @{{# if(d.del) { }}
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>

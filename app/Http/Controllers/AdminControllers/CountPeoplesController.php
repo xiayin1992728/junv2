@@ -39,6 +39,7 @@ class CountPeoplesController extends Controller
             $verifyNumber = $countPeople->where('create_time',$time)->sum('verify');
             $data = $user->where('sid','<>',0)->offset($offset)->limit(floor($registerNumber))->orderByDesc('id')->get()->toArray();
         }
+
         return [
             'code'=> 0,
             'msg' => '',

@@ -143,4 +143,10 @@ class SpreadsController extends Controller
 
         return $where;
     }
+
+
+    public function salesmanSpreads(Spread $spread,$uid)
+    {
+            dd($uid);
+    }
 }

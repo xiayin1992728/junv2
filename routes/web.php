@@ -74,6 +74,7 @@ Route::namespace('AdminControllers')->prefix('admin')->group(function() {
        Route::resource('spreads','SpreadsController',['except' => ['show']]);
        Route::get('spreads/data','SpreadsController@data')->name('admin.spreads.data');
        Route::get('spreads/search','SpreadsController@search')->name('admin.spreads.search');
+       Route::post('spreads/salesmanSpread/{uid}','SpreadsController@salesmanSpreads')->name('admin.spreads.salesman');
 
        Route::resource('countPeoples','CountPeoplesController',['only' => ['index']]);
        Route::get('countPeoples/data','CountPeoplesController@data')->name('admin.countPeoples.data');
