@@ -17,7 +17,7 @@
     </div>
     <div class="layui-row">
         <button class="layui-btn">当天注册总数<span id="register" class="layui-badge layui-bg-gray"></span></button>
-        <button class="layui-btn">当天认证总数<span id="verify" class="layui-badge layui-bg-gray"></span></button>
+        {{--<button class="layui-btn">当天认证总数<span id="verify" class="layui-badge layui-bg-gray"></span></button>--}}
     </div>
     <table id="salesman" lay-filter="salesman" lay-data="{id: 'salesman'}"></table>
 </div>
